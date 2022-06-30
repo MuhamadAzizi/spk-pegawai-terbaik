@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 19, 2021 at 06:02 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Host: 127.0.0.1
+-- Generation Time: Jun 30, 2022 at 02:04 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -29,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alternatif` (
   `id` int(11) NOT NULL,
-  `nip` varchar(25) NULL,
+  `nip` varchar(25) DEFAULT NULL,
   `nama` varchar(255) NOT NULL,
   `pangkat` int(3) DEFAULT NULL,
   `golongan` int(3) DEFAULT NULL,
@@ -178,21 +179,23 @@ INSERT INTO `matrix` (`id`, `id_alternatif`, `id_kriteria`, `nilai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(55) NOT NULL,
-  `password` varchar(55) NOT NULL
+  `password` varchar(55) NOT NULL,
+  `status` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(1, 'admin', 'admin');
+INSERT INTO `users` (`id`, `username`, `password`, `status`) VALUES
+(1, 'admin', 'admin', 'kasubag_tu'),
+(2, 'pimpinan', 'pimpinan', 'pimpinan');
 
 --
 -- Indexes for dumped tables
@@ -222,9 +225,9 @@ ALTER TABLE `matrix`
   ADD KEY `id_kriteria` (`id_kriteria`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `users`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -244,10 +247,10 @@ ALTER TABLE `matrix`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

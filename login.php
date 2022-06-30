@@ -13,7 +13,7 @@ if (isset($_POST['login'])) {
     $sql_krit = "SELECT * FROM kriteria";
     $result_krit = mysqli_query($conn, $sql_krit);
 
-    if (mysqli_num_rows($result_lgn) == 1) {
+    if (mysqli_num_rows($result_lgn) > 0) {
         $_SESSION['username'] = $username;
         $_SESSION['num_rows'] = mysqli_num_rows($result_krit);
         $_SESSION['status'] = $row_lgn['status'];
